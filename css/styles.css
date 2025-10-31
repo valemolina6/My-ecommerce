@@ -107,3 +107,161 @@ body.accesorios section {
   border-radius: 10px;
 }
 
+body.pantalones section {
+  background-color: var(--blanco);
+}
+
+.productos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  background-color: var(--beige-medio);
+  padding: 15px;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+body.remeras section {
+  background-color: var(--blanco);
+}
+
+.productos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  background-color: var(--beige-medio);
+  padding: 15px;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* NAV LIST (quita bullets y pone en fila) */
+.main-nav .nav-list {
+  list-style: none;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* enlaces del nav */
+.main-nav .nav-link {
+  text-decoration: none;
+  color: var(--color-texto, #333);
+  font-weight: 600;
+  padding: 6px 8px;
+}
+.main-nav .nav-link:hover {
+  color: var(--color-acento, #a67c52);
+}
+
+/* HEADER layout (logo a la izquierda, nav a la derecha) — similar al accesorios */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-secundario);
+  padding: 18px 40px;
+}
+
+/* Si querés centrar nav hacia la derecha en pantallas grandes */
+@media (min-width: 900px) {
+  .site-header { padding: 20px 80px; }
+}
+
+/* Sección de autenticación (centra el form como en accesorios) */
+.section-auth {
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 30px 20px;
+}
+
+/* FORMULARIO */
+.form {
+  background-color: var(--color-blanco, #fff);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.form-title {
+  color: var(--color-acento, #a67c52);
+  margin-bottom: 18px;
+  font-size: 1.4rem;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  text-align: left;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--color-texto, #333);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #e6e2dc;
+  background-color: #fff;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background-color: var(--color-acento, #a67c52);
+  color: var(--color-blanco, #fff);
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 700;
+}
+.btn-primary:hover { filter: brightness(0.95); }
+
+.site-footer {
+  margin-top: 60px;
+  background-color: var(--color-secundario);
+  text-align: center;
+  padding: 18px;
+  color: var(--color-texto);
+}
+
+
