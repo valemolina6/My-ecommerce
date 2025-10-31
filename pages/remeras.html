@@ -3,25 +3,48 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Maluuca Remeras</title>
+        <title>Remeras - Malucca</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/styles.css">
     </head>
-    <body>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Volver a la home</a></li>
-                <li><a href="accesorios.html">Accesorios</a></li>
-                <li><a href="pantalones.html">Pantalones</a></li>
-            </ul>
-        </nav>
 
-        <section>
-            <h2>Remeras</h2>
-            <p>Explorá nuestra colección de remeras Malucca.</p>
+    <body class="page-remeras">
+        <header class="site-header">
+            <h1>Malucca</h1>
+            <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a class="nav-link" href="../index.html">Volver a la home</a></li>
+                    <li><a class="nav-link" href="accesorios.html">Accesorios</a></li>
+                    <li><a class="nav-link" href="pantalones.html">Pantalones</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+        <section class="page-section">
+            <h2 class="section-title">Remeras</h2>
+            <div class="productos productos-remeras">
+                <article class="card card-product">
+                    <img src="../img/products/rembeige.jpg" alt="Remera beige" class="card-img" />
+                    <div class="card-body">
+                        <h3 class="card-title">Remera Beige</h3>
+                        <p class="card-price">$15.000</p>
+                        <button class="btn btn-primary">Agregar</button>
+                    </div>
+                </article>
+
+                <article class="card card-product">
+                    <img src="../img/products/blusablanca.jpg" alt="Blusa blanca" class="card-img" />
+                    <div class="card-body">
+                        <h3 class="card-title">Blusa Blanca</h3>
+                        <p class="card-price">$16.000</p>
+                        <button class="btn btn-primary">Agregar</button>
+                    </div>
+                </article>
+        </div>
         </section>
-        
-        <script src="" async defer></script>
+        </main>
     </body>
 </html>

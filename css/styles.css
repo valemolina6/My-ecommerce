@@ -169,7 +169,6 @@ body.remeras section {
   border-radius: 10px;
 }
 
-/* NAV LIST (quita bullets y pone en fila) */
 .main-nav .nav-list {
   list-style: none;
   display: flex;
@@ -179,7 +178,6 @@ body.remeras section {
   padding: 0;
 }
 
-/* enlaces del nav */
 .main-nav .nav-link {
   text-decoration: none;
   color: var(--color-texto, #333);
@@ -190,7 +188,6 @@ body.remeras section {
   color: var(--color-acento, #a67c52);
 }
 
-/* HEADER layout (logo a la izquierda, nav a la derecha) — similar al accesorios */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -199,19 +196,16 @@ body.remeras section {
   padding: 18px 40px;
 }
 
-/* Si querés centrar nav hacia la derecha en pantallas grandes */
 @media (min-width: 900px) {
   .site-header { padding: 20px 80px; }
 }
 
-/* Sección de autenticación (centra el form como en accesorios) */
 .section-auth {
   max-width: 720px;
   margin: 40px auto;
   padding: 30px 20px;
 }
 
-/* FORMULARIO */
 .form {
   background-color: var(--color-blanco, #fff);
   padding: 30px;
