@@ -6,35 +6,44 @@
         <title>Registro</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="../css/styles.css">
     </head>
-    <body>
-        <h2>Formulario</h2>
-        <Form action="" method="get">
-            <label  for="Nombre"> Nombre: </label>
-            <input type="text" id="Nombre" name="Nombre" placeholder="Ingrese su nombre">
-            <br><br>
-            <label  for="Apellido"> Apellido: </label>
-            <input type="text" id="Apellido" name="Apellido" placeholder="Ingrese su apellido">
-            <br><br>
-            <label  for="Email"> Email: </label>
-            <input type="email" id="Email" name="Email" placeholder="Ingrese su email">
-            <br><br>
-            <label  for="Date"> Fecha: </label>
-            <input type="date" id="Fecha" name="Fecha" placeholder="Ingrese su fecha de nacimiento">
-            <br><br>
-            <label  for="Contraseña"> Contraseña: </label>
-            <input type="password" id="Apellido" name="Apellido" placeholder="Ingrese su contraseña">
-            <br><br>
-            <button>Enviar</button>         
-        </Form>
-        <script src="" async defer></script>
-         <nav>
-            <ul>
-                <li><a href="../index.html">Volver a la home</a></li>
-                <li><a href="login.html">Login</a></li>
-                
+    <body class="page-registro">
+         
+        <header class="site-header">
+            <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
+            <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a class="nav-link" href="../index.html">Volver a la home</a></li>
+                <li><a class="nav-link" href="login.html">Login</a></li>
             </ul>
         </nav>
+        </header>
+
+        <main>
+        <section class="page-section section-auth"></section>
+            <form class="form form-registro" action="#" method="post" novalidate>
+                <h2 class="form-title">Crear Cuenta</h2>
+                    <label class="form-label" for="Nombre"> Nombre: </label>
+                    <input class="form-input" type="text" id="Nombre" name="Nombre" placeholder="Ingrese su nombre">
+                    <br><br>
+                    <label class="form-label" for="Apellido"> Apellido: </label>
+                    <input class="form-input" type="text" id="Apellido" name="Apellido" placeholder="Ingrese su apellido">
+                    <br><br>
+                    <label class="form-label" for="Email"> Email: </label>
+                    <input class="form-input" type="email" id="Email" name="Email" placeholder="Ingrese su email">
+                    <br><br>
+                    <label class="form-label" for="Date"> Fecha: </label>
+                    <input class="form-input" type="date" id="Fecha" name="Fecha" placeholder="Ingrese su fecha de nacimiento">
+                    <br><br>
+                    <label class="form-label" for="Contraseña"> Contraseña: </label>
+                    <input class="form-input" type="password" id="Apellido" name="Apellido" placeholder="Ingrese su contraseña">
+                    <br><br>
+                    <button class="btn btn-primary" type="submit">Registrarme</button>        
+                </Form>
+            </section>
+        </main>
+        <script src="" async defer></script>
+
     </body>
 </html>

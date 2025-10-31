@@ -7,21 +7,45 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/styles.css">
-    </head>
-    <body>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Volver a la home</a></li>
-                <li><a href="accesorios.html">Accesorios</a></li>
-                <li><a href="remeras.html">Remeras</a></li>
-            </ul>
-        </nav>
 
-        <section>
-            <h2>Pantalones</h2>
-            <p>Explorá nuestra colección de pantalones Malucca.</p>
-        </section>
+        <body class="page-pantalones">
 
-        <script src="" async defer></script>
-    </body>
+    <header class="site-header">
+        <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
+        <nav class="main-nav">
+        <ul class="nav-list">
+        <li><a class="nav-link" href="../index.html">Inicio</a></li>
+        <li><a class="nav-link" href="remeras.html">Remeras</a></li>
+        <li><a class="nav-link" href="accesorios.html">Accesorios</a></li>
+        </ul>
+    </nav>
+    </header>
+
+    <main>
+        <section class="page-section">
+        <h2 class="section-title">Pantalones</h2>
+
+        <div class="productos productos-pantalones">
+            <article class="card card-product">
+            <img src="../img/products/pantbeige.jpg" alt="Pantalón beige" class="card-img" />
+        <div class="card-body">
+            <h3 class="card-title">Pantalón Beige</h3>
+            <p class="card-price">$25.000</p>
+            <button class="btn btn-primary">Agregar</button>
+        </div>
+        </article>
+
+        <article class="card card-product">
+          <img src="../img/products/pantmarron.jpg" alt="Pantalón marrón" class="card-img" />
+          <div class="card-body">
+            <h3 class="card-title">Pantalón Marrón</h3>
+            <p class="card-price">$27.000</p>
+            <button class="btn btn-primary">Agregar</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+</body>
 </html>
