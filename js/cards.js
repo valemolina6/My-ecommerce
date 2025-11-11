@@ -7,7 +7,7 @@ const productos = [
     title: 'Collar dorado',
     description: 'Collar delicado con cadena dorada y dije.',
     price: 4500,
-    img: '../img/collar.jpg'
+    img: '../img/products/collarperla.jpg'
   },
   {
     id: 'p2',
