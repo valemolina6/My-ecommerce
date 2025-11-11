@@ -1,63 +1,66 @@
-/* navbar.js */
+/* navbar.js
+  - Renderiza un navbar dinámico a partir de la estructura 'paginas'
+  - Inserta el logo, links y el lado derecho (usuario/logout o link a login)
+*/
 
-// Estructura de datos: páginas (títulos y rutas)
-const paginas = [
-  { title: 'Inicio', href: '../index.html' },
-  { title: 'Remeras', href: 'remeras.html' },
-  { title: 'Pantalones', href: 'pantalones.html' },
-  { title: 'Accesorios', href: 'accesorios.html' },
-  { title: 'Mi cuenta', href: 'pages/login.html' } // ejemplo
-];
+(function () {
+  const base = location.pathname.includes('/pages/') ? '..' : '.';
 
-// Genera el navbar a partir de un contenedor con id="navbar"
-function renderNavbar(containerSelector = '#navbar') {
-  const container = document.querySelector(containerSelector);
-  if (!container) return;
+  // --- Estructura de páginas: modificá si querés otros títulos/rutas
+  const paginas = [
+    { title: 'Inicio', href: `${base}/index.html` },
+    { title: 'Remeras', href: `${base}/pages/remeras.html` },
+    { title: 'Pantalones', href: `${base}/pages/pantalones.html` },
+    { title: 'Accesorios', href: `${base}/pages/accesorios.html` }
+  ];
 
-  // Si el usuario está logueado, mostramos logout
-  const user = JSON.parse(localStorage.getItem('malucca_user') || 'null');
-  const nav = document.createElement('nav');
-  nav.className = 'main-nav';
+  function renderNavbar(containerSelector = '#navbar') {
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
 
-  // Brand
-  const brand = document.createElement('div');
-  brand.className = 'brand';
-  brand.innerHTML = `<a class="brand-link" href="../index.html"><img src="../img/logo_malucca.png" alt="logo" class="logo" /></a>`;
-  nav.appendChild(brand);
+    // Limpiar contenedor
+    container.innerHTML = '';
 
-  // Links
-  const ul = document.createElement('ul');
-  ul.className = 'nav-list';
-  paginas.forEach(p => {
-    const li = document.createElement('li');
-    li.innerHTML = `<a class="nav-link" href="${p.href}">${p.title}</a>`;
-    ul.appendChild(li);
-  });
+    // Crear nav
+    const nav = document.createElement('nav');
+    nav.className = 'main-nav';
 
-  nav.appendChild(ul);
+    // Brand (logo)
+    const brand = document.createElement('div');
+    brand.className = 'brand';
+    brand.innerHTML = `<a class="brand-link" href="${base}/index.html"><img src="${base}/img/logo_malucca.png" alt="Malucca" class="logo" /></a>`;
+    nav.appendChild(brand);
 
-  // Right side: user or login
-  const right = document.createElement('div');
-  right.className = 'nav-right';
-  if (user) {
-    right.innerHTML = `<span class="nav-user">Hola, ${user.email}</span>
-                       <button data-logout class="btn btn-logout">Cerrar sesión</button>`;
-  } else {
-    right.innerHTML = `<a class="nav-link" href="../pages/login.html">Iniciar sesión</a>`;
+    // Links
+    const ul = document.createElement('ul');
+    ul.className = 'nav-list';
+    paginas.forEach(p => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a class="nav-link" href="${p.href}">${p.title}</a>`;
+      ul.appendChild(li);
+    });
+    nav.appendChild(ul);
+
+    // Right side
+    const right = document.createElement('div');
+    right.className = 'nav-right';
+    const user = JSON.parse(localStorage.getItem('malucca_user') || 'null');
+    if (user) {
+      right.innerHTML = `<span class="nav-user">Hola, ${user.email}</span>
+                         <button class="btn btn-logout" data-logout>Cerrar sesión</button>`;
+    } else {
+      right.innerHTML = `<a class="nav-link" href="${base}/pages/login.html">Iniciar sesión</a>`;
+    }
+    nav.appendChild(right);
+
+    container.appendChild(nav);
+
+    // Si querés que el navbar esté sticky o con clases extra, hacelo por CSS
   }
-  nav.appendChild(right);
 
-  container.appendChild(nav);
+  // Auto-render si existe #navbar
+  document.addEventListener('DOMContentLoaded', () => renderNavbar('#navbar'));
 
-  // conectar logout dinámico si existe
-  const logoutBtn = container.querySelector('[data-logout]');
-  if (logoutBtn) logoutBtn.addEventListener('click', () => {
-    localStorage.removeItem('malucca_user');
-    window.location.href = '../pages/login.html';
-  });
-}
-
-// auto render si hay un contenedor #navbar
-document.addEventListener('DOMContentLoaded', () => {
-  renderNavbar('#navbar');
-});
+  // Exponer si querés renderizar manualmente
+  window.renderMaluccaNavbar = renderNavbar;
+})();

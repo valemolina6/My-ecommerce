@@ -206,7 +206,7 @@ body.remeras section {
   padding: 30px 20px;
 }
 
-.form {
+.form-login {
   background-color: var(--color-blanco, #fff);
   padding: 30px;
   border-radius: 12px;

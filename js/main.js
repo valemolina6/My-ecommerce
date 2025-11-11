@@ -1,9 +1,8 @@
-/* main.js */
-
+// main.js
 document.addEventListener('DOMContentLoaded', () => {
-  // Si la página requiere auth, llamá requireAuth
-  // Ej: si la carpeta pages contiene páginas privadas, podés usar:
-  // requireAuth(); // desde auth.js
+  // Si querés forzar que ciertas páginas estén protegidas:
+  // Por ejemplo: si currentPath contiene '/pages/pedidos.html' => requireAuth()
+  // window.maluccaAuth && window.maluccaAuth.requireAuth();
 
-  // Si querés inicializar otras cosas lo hacés aquí
+  // También podés hacer otras inicializaciones aquí
 });

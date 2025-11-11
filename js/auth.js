@@ -1,40 +1,69 @@
-// Guarda "logueado" en localStorage y redirecciona
-function loginUser(email) {
-  localStorage.setItem('malucca_user', JSON.stringify({ email }));
-  window.location.href = '../index.html';
-}
+/* auth.js
+  - Manejo simple de login/logout con localStorage
+  - Funciona para páginas en la raíz y en /pages/ (detecta basePath)
+*/
 
-// Cerrar sesión
-function logoutUser() {
-  localStorage.removeItem('malucca_user');
-  window.location.href = '../pages/login.html';
-}
+(function () {
+  // Detectar base para rutas: si estamos en /pages/... subimos un nivel
+  const base = location.pathname.includes('/pages/') ? '..' : '.';
 
-// Función para chequear si está logueado; si no, redirige al login
-function requireAuth(redirectToLogin = true) {
-  const user = localStorage.getItem('malucca_user');
-  if (!user && redirectToLogin) {
-    window.location.href = '../pages/login.html';
-    return false;
+  // Guardar usuario simple en localStorage
+  function loginUser(email) {
+    localStorage.setItem('malucca_user', JSON.stringify({ email }));
+    // redirigir a la home (ajusta base si estás en pages/)
+    window.location.href = `${base}/index.html`;
   }
-  return true;
-}
 
-// Al cargar página login: manejar formulario
-document.addEventListener('DOMContentLoaded', () => {
-  if (location.pathname.includes('/pages/login.html')) {
-    const form = document.querySelector('.form-login');
+  // Logout: borrar y redirigir al login (si estamos en root, usar pages/login)
+  function logoutUser() {
+    localStorage.removeItem('malucca_user');
+    window.location.href = `${base}/pages/login.html`;
+  }
+
+  // Forzar auth: si no está logueado redirige al login
+  function requireAuth(redirectToLogin = true) {
+    const user = localStorage.getItem('malucca_user');
+    if (!user && redirectToLogin) {
+      const baseForLogin = location.pathname.includes('/pages/') ? '.' : './pages';
+      window.location.href = `${baseForLogin}/login.html`;
+      return false;
+    }
+    return true;
+  }
+
+  // Cuando la página carga
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1) Conectar formulario de login si existe
+    const form = document.querySelector('.form-login') || document.querySelector('#loginForm');
     if (form) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = document.querySelector('#email').value.trim();
-        const password = document.querySelector('#password').value.trim();
+        const emailEl = form.querySelector('#email') || form.querySelector('input[type="email"]');
+        const passEl = form.querySelector('#password') || form.querySelector('input[type="password"]');
+        const email = emailEl ? emailEl.value.trim() : '';
+        const password = passEl ? passEl.value.trim() : '';
         if (!email || !password) {
           alert('Completá email y contraseña');
           return;
         }
+        // Aquí podrías validar formato del email si querés
         loginUser(email);
       });
     }
-  }
-});
+
+    // 2) Conectar logout si existe cualquier elemento con attribute data-logout
+    document.querySelectorAll('[data-logout]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        logoutUser();
+      });
+    });
+  });
+
+  // Exponer funciones globalmente por si las necesitás en consola o en otros scripts
+  window.maluccaAuth = {
+    loginUser,
+    logoutUser,
+    requireAuth
+  };
+})();
