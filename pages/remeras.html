@@ -1,52 +1,48 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Remeras - Malucca</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/styles.css">
-    </head>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Remeras - Malucca</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
 
-    <body class="page-remeras">
-        <header class="site-header">
-            <h1>Malucca</h1>
-            <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a class="nav-link" href="../index.html">Volver a la home</a></li>
-                    <li><a class="nav-link" href="accesorios.html">Accesorios</a></li>
-                    <li><a class="nav-link" href="pantalones.html">Pantalones</a></li>
-                </ul>
-            </nav>
-        </header>
+  <!-- clase "remeras" para que se aplique body.remeras del CSS -->
+  <body class="remeras">
 
-        <main>
-        <section class="page-section">
-            <h2 class="section-title">Remeras</h2>
-            <p>Explorá nuestra colección de remeras Malucca.</p>
+    <!-- HEADER CON TU ESTÉTICA -->
+    <header class="site-header">
+      <h1>Malucca</h1>
+      <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html">Volver a la home</a></li>
+          <li><a class="nav-link" href="accesorios.html">Accesorios</a></li>
+          <li><a class="nav-link" href="pantalones.html">Pantalones</a></li>
+        </ul>
+      </nav>
+    </header>
 
-            <div class="productos productos-remeras">
-                <article class="card card-product">
-                    <img src="../img/products/rembeige.jpg" alt="Remera beige" class="card-img" />
-                    <div class="card-body">
-                        <h3 class="card-title">Remera Beige</h3>
-                        <p class="card-price">$15.000</p>
-                        <button class="btn btn-primary">Agregar</button>
-                    </div>
-                </article>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+      <section class="page-section">
+        <h2 class="section-title">Remeras</h2>
+        <p>Explorá nuestra colección de remeras Malucca.</p>
 
-                <article class="card card-product">
-                    <img src="../img/products/blusablanca.jpg" alt="Blusa blanca" class="card-img" />
-                    <div class="card-body">
-                        <h3 class="card-title">Blusa Blanca</h3>
-                        <p class="card-price">$16.000</p>
-                        <button class="btn btn-primary">Agregar</button>
-                    </div>
-                </article>
-        </div>
-        </section>
-        </main>
-    </body>
+        <!-- ACA JS VA A CREAR LAS CARDS DE REMERAS -->
+        <div id="products-container"></div>
+      </section>
+    </main>
+
+    <!-- SCRIPTS -->
+    <script src="../js/products.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+      // Dibuja las cards SOLO de la categoría "remeras"
+      renderProductCards('products-container', 'remeras');
+    </script>
+  </body>
 </html>
+

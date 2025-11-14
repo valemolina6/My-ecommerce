@@ -1,47 +1,51 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Accesorios - Malucca</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/styles.css">
-    </head>
-    <body class=>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Accesorios - Malucca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
 
+  <!-- clase "accesorios" para que se apliquen tus estilos body.accesorios -->
+  <body class="accesorios">
+
+    <!-- HEADER CON TU ESTÉTICA -->
     <header>
-        <h1>Malucca</h1>
-        <img src="../img/logo_malucca.png" alt="Logo de Malucca" class="logo">
-        <nav class="main-nav">
-            <ul class="nav-list">
-                <li><a class="nav-link" href="../index.html">Volver a la home</a></li>
-                <li><a class="nav-link" href="remeras.html">Remeras</a></li>
-                <li><a class="nav-link" href="pantalones.html">Pantalones</a></li>
-            </ul>
-        </nav>
+      <h1>Malucca</h1>
+      <img src="../img/logo_malucca.png" alt="Logo de Malucca" class="logo">
+
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html">Volver a la home</a></li>
+          <li><a class="nav-link" href="remeras.html">Remeras</a></li>
+          <li><a class="nav-link" href="pantalones.html">Pantalones</a></li>
+        </ul>
+      </nav>
     </header>
 
-        <section>
-            <h2>Accesorios</h2>
-            <p>Explorá nuestra colección de accesorios Malucca.</p>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+      <section>
+        <h2>Accesorios</h2>
+        <p>Explorá nuestra colección de accesorios Malucca.</p>
 
-            <div class="productos">
-                <div class="card">
-                    <img src="../img/products/collarperla.jpg" alt="Collar Malucca">
-                    <h3>Collar dorado</h3>
-                    <p>$4.500</p>
-                    <button class="btn btn-primary">Agregar</button>
-                </div>
-                <div class="card">
-                    <img src="../img/products/arosperla.jpg" alt="Aros Malucca">
-                    <h3>Aros de perlas</h3>
-                    <p>$3.200</p>
-                    <button class="btn btn-primary">Agregar</button>
-                </div>
-            </div>
-        </section>
+        <!-- ACA JS VA A CREAR TUS CARDS CON CLASE .productos Y .card -->
+        <div id="products-container"></div>
+      </section>
+    </main>
 
-        <script src="" async defer></script>
-    </body>
+    <!-- SCRIPTS -->
+    <!-- (si más adelante usás el navbar como componente, también podrías cargar navigation.js aquí) -->
+    <script src="../js/products.js"></script>
+    <script src="../js/auth.js"></script>
+
+    <script>
+      // Dibuja las cards SOLO de la categoría "accesorios"
+      // Usa tu CSS: .productos, .card, .btn, etc.
+      renderProductCards('products-container', 'accesorios');
+    </script>
+  </body>
 </html>
+

@@ -1,50 +1,96 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Registro</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/styles.css">
-    </head>
-    <body class="page-registro">
-         
-        <header class="site-header">
-            <h1>Malucca</h1>
-            <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
-            <nav class="main-nav">
-            <ul class="nav-list">
-                <li><a class="nav-link" href="../index.html">Volver a la home</a></li>
-                <li><a class="nav-link" href="login.html">Login</a></li>
-            </ul>
-        </nav>
-        </header>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Registro - Malucca</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
 
-        <main>
-        <section class="page-section section-auth"></section>
-            <form class="form form-registro" action="#" method="post" novalidate>
-                <h2 class="form-title">Crear Cuenta</h2>
-                    <label class="form-label" for="Nombre"> Nombre: </label>
-                    <input class="form-input" type="text" id="Nombre" name="Nombre" placeholder="Ingrese su nombre">
-                    <br><br>
-                    <label class="form-label" for="Apellido"> Apellido: </label>
-                    <input class="form-input" type="text" id="Apellido" name="Apellido" placeholder="Ingrese su apellido">
-                    <br><br>
-                    <label class="form-label" for="Email"> Email: </label>
-                    <input class="form-input" type="email" id="Email" name="Email" placeholder="Ingrese su email">
-                    <br><br>
-                    <label class="form-label" for="Date"> Fecha: </label>
-                    <input class="form-input" type="date" id="Fecha" name="Fecha" placeholder="Ingrese su fecha de nacimiento">
-                    <br><br>
-                    <label class="form-label" for="Contraseña"> Contraseña: </label>
-                    <input class="form-input" type="password" id="Apellido" name="Apellido" placeholder="Ingrese su contraseña">
-                    <br><br>
-                    <button class="btn btn-primary" type="submit">Registrarme</button>        
-                </Form>
-            </section>
-        </main>
-        <script src="" async defer></script>
+  <body class="page-registro">
+    <!-- HEADER -->
+    <header class="site-header">
+      <h1>Malucca</h1>
+      <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html">Volver a la home</a></li>
+          <li><a class="nav-link" href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    </body>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+      <section class="page-section section-auth">
+        <form
+          id="register-form"
+          class="form form-registro"
+          action="#"
+          method="post"
+          novalidate
+        >
+          <h2 class="form-title">Crear Cuenta</h2>
+
+          <label class="form-label" for="nombre">Nombre:</label>
+          <input
+            class="form-input"
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Ingrese su nombre"
+            required
+          />
+
+          <label class="form-label" for="apellido">Apellido:</label>
+          <input
+            class="form-input"
+            type="text"
+            id="apellido"
+            name="apellido"
+            placeholder="Ingrese su apellido"
+            required
+          />
+
+          <label class="form-label" for="email">Email:</label>
+          <input
+            class="form-input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Ingrese su email"
+            required
+          />
+
+          <label class="form-label" for="fecha">Fecha de nacimiento:</label>
+          <input
+            class="form-input"
+            type="date"
+            id="fecha"
+            name="fecha"
+            required
+          />
+
+          <label class="form-label" for="password">Contraseña:</label>
+          <input
+            class="form-input"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Ingrese su contraseña"
+            required
+          />
+
+          <button class="btn btn-primary" type="submit">
+            Registrarme
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <!-- SCRIPT DE AUTENTICACIÓN -->
+    <script src="../js/auth.js"></script>
+  </body>
 </html>

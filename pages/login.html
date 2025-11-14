@@ -1,47 +1,66 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Login - Malucca</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/styles.css">
-    </head>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login - Malucca</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
 
-    <body class="page-login">
-
+  <body class="page-login">
+    <!-- HEADER -->
     <header class="site-header">
-    <h1>Malucca</h1>
-    <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
-    <nav class="main-nav">
-      <ul class="nav-list">
-        <li><a class="nav-link" href="../index.html">Inicio</a></li>
-        <li><a class="nav-link" href="registro.html">Registro</a></li>
-        <li><a class="nav-link" href="remeras.html">Remeras</a></li>
-        <li><a class="nav-link" href="pantalones.html">Pantalones</a></li>
-        <li><a class="nav-link" href="accesorios.html">Accesorios</a></li>
-      </ul>
-    </nav>
+      <h1>Malucca</h1>
+      <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li><a class="nav-link" href="registro.html">Registro</a></li>
+          <li><a class="nav-link" href="remeras.html">Remeras</a></li>
+          <li><a class="nav-link" href="pantalones.html">Pantalones</a></li>
+          <li><a class="nav-link" href="accesorios.html">Accesorios</a></li>
+        </ul>
+      </nav>
     </header>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <main>
-    <section class="page-section section-auth">
-      <form class="form form-login" action="#" method="post" novalidate>
-        <h2 class="form-title">Iniciar Sesión</h2>
+      <section class="page-section section-auth">
+        <form id="login-form" class="form form-login" novalidate>
+          <h2 class="form-title">Iniciar sesión</h2>
 
-        <label class="form-label" for="email">Correo electrónico</label>
-        <input class="form-input" id="email" name="email" type="email" placeholder="tucorreo@ejemplo.com" required />
+          <label class="form-label" for="email">Correo electrónico</label>
+          <input
+            class="form-input"
+            type="email"
+            id="email"
+            name="email"
+            required
+          />
 
-        <label class="form-label" for="password">Contraseña</label>
-        <input class="form-input" id="password" name="password" type="password" placeholder="********" required />
+          <label class="form-label" for="password">Contraseña</label>
+          <input
+            class="form-input"
+            type="password"
+            id="password"
+            name="password"
+            required
+          />
 
-        <button class="btn btn-primary" type="submit">Entrar</button>
-      </form>
-    </section>
+          <button
+            type="submit"
+            id="login-submit"
+            class="btn btn-primary"
+          >
+            Entrar
+          </button>
+        </form>
+      </section>
     </main>
-    
+
+    <!-- SCRIPT QUE MANEJA LOGIN/REGISTRO/LOGOUT -->
     <script src="../js/auth.js"></script>
-    </body>
-    
+  </body>
 </html>

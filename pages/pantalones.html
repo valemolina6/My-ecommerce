@@ -1,53 +1,48 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Pantalones - Maluuca</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/styles.css">
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pantalones - Malucca</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
 
-        <body class="page-pantalones">
+  <!-- clase "pantalones" para que se aplique body.pantalones del CSS -->
+  <body class="pantalones">
 
+    <!-- HEADER CON TU ESTÉTICA -->
     <header class="site-header">
-        <h1>Malucca</h1>
-        <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
-        <nav class="main-nav">
+      <h1>Malucca</h1>
+      <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
+      <nav class="main-nav">
         <ul class="nav-list">
-        <li><a class="nav-link" href="../index.html">Inicio</a></li>
-        <li><a class="nav-link" href="remeras.html">Remeras</a></li>
-        <li><a class="nav-link" href="accesorios.html">Accesorios</a></li>
+          <li><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li><a class="nav-link" href="remeras.html">Remeras</a></li>
+          <li><a class="nav-link" href="accesorios.html">Accesorios</a></li>
         </ul>
-    </nav>
+      </nav>
     </header>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <main>
-        <section class="page-section">
+      <section class="page-section">
         <h2 class="section-title">Pantalones</h2>
         <p>Explorá nuestra colección de pantalones Malucca.</p>
 
-        <div class="productos productos-pantalones">
-            <article class="card card-product">
-            <img src="../img/products/pantbeige.jpg" alt="Pantalón beige" class="card-img" />
-        <div class="card-body">
-            <h3 class="card-title">Pantalón Beige</h3>
-            <p class="card-price">$25.000</p>
-            <button class="btn btn-primary">Agregar</button>
-        </div>
-        </article>
+        <!-- ACA JS VA A CREAR LAS CARDS DE PANTALONES -->
+        <div id="products-container"></div>
+      </section>
+    </main>
 
-        <article class="card card-product">
-          <img src="../img/products/pantmarron.jpg" alt="Pantalón marrón" class="card-img" />
-          <div class="card-body">
-            <h3 class="card-title">Pantalón Marrón</h3>
-            <p class="card-price">$27.000</p>
-            <button class="btn btn-primary">Agregar</button>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-</body>
+    <!-- SCRIPTS -->
+    <script src="../js/products.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+      // Dibuja las cards SOLO de la categoría "pantalones"
+      renderProductCards('products-container', 'pantalones');
+    </script>
+  </body>
 </html>
+

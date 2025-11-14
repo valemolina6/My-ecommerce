@@ -6,7 +6,12 @@
   --color-texto: #333;
   --color-blanco: #fff;
   --fuente-principal: 'Poppins', sans-serif;
+
+  /* Agrego estas dos para que no den error */
+  --beige-medio: #e7d8c9;
+  --blanco: #ffffff;
 }
+
 
 .logo {
   width: 100px;
@@ -256,6 +261,31 @@ body.remeras section {
   text-align: center;
   padding: 18px;
   color: var(--color-texto);
+}
+
+.quantity-controls {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.quantity-value {
+  min-width: 24px;
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+}
+
+button, .btn {
+  background-color: var(--color-acento);
+  color: var(--color-blanco);
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 
