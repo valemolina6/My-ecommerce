@@ -8,31 +8,25 @@
     <link rel="stylesheet" href="../css/styles.css">
   </head>
   <body class="accesorios">
-    <header>
+    <header class="site-header">
       <h1>Malucca</h1>
       <img src="../img/logo_malucca.png" alt="Logo de Malucca" class="logo">
-
-      <nav class="main-nav">
-        <ul class="nav-list">
-          <li><a class="nav-link" href="../index.html">Volver a la home</a></li>
-          <li><a class="nav-link" href="remeras.html">Remeras</a></li>
-          <li><a class="nav-link" href="pantalones.html">Pantalones</a></li>
-          <li><a class="nav-link" href="login.html" id="logout-button">Cerrar sesión</a></li>
-        </ul>
-      </nav>
+      <div id="navbar"></div>
     </header>
+
     <main>
-      <section>
-        <h2>Accesorios</h2>
+      <section class="page-section">
+        <h2 class="section-title">Accesorios</h2>
         <p>Explorá nuestra colección de accesorios Malucca.</p>
         <div id="products-container"></div>
       </section>
     </main>
 
+    <script src="../js/navigation.js"></script>
     <script src="../js/products.js"></script>
     <script src="../js/auth.js"></script>
-
     <script>
+      renderNavbar('navbar');
       renderProductCards('products-container', 'accesorios');
     </script>
   </body>
