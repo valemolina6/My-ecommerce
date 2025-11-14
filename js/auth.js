@@ -1,13 +1,10 @@
-// js/auth.js
 
 document.addEventListener('DOMContentLoaded', function () {
-  // 1) LOGIN
-  const loginForm = document.getElementById('login-form');
+const loginForm = document.getElementById('login-form');
 
   if (loginForm) {
     loginForm.addEventListener('submit', function (event) {
-      event.preventDefault(); // evita que la página se recargue
-
+      event.preventDefault();
       const emailInput = document.getElementById('email');
       const passwordInput = document.getElementById('password');
 
@@ -18,18 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('Por favor, completá correo y contraseña.');
         return;
       }
-
-      // Si todo está completo, "logueamos" y vamos a la home
       window.location.href = '../index.html';
     });
   }
-
-  // 2) REGISTRO
-  const registerForm = document.getElementById('register-form');
+const registerForm = document.getElementById('register-form');
 
   if (registerForm) {
     registerForm.addEventListener('submit', function (event) {
-      event.preventDefault(); // evitamos recargar la página
+      event.preventDefault(); 
 
       const nombre = document.getElementById('nombre');
       const apellido = document.getElementById('apellido');
@@ -47,21 +40,13 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('Por favor, completá todos los campos.');
         return;
       }
-
-      // Acá podrías guardar datos en localStorage si quisieras (no es obligatorio para la consigna)
-
       alert('Registro exitoso. Ahora podés iniciar sesión.');
-      // Desde /pages/registro.html vamos a /pages/login.html
       window.location.href = './login.html';
     });
   }
-
-  // 3) LOGOUT (si tenés un botón con id="logout-button")
   const logoutButton = document.getElementById('logout-button');
-
   if (logoutButton) {
     logoutButton.addEventListener('click', function () {
-      // Volvemos al login
       window.location.href = './login.html';
     });
   }

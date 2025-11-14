@@ -9,40 +9,30 @@
     <link rel="stylesheet" href="../css/styles.css">
   </head>
 
-  <!-- clase "remeras" para que se aplique body.remeras del CSS -->
   <body class="remeras">
-
-    <!-- HEADER CON TU ESTÉTICA -->
     <header class="site-header">
       <h1>Malucca</h1>
       <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
-      <nav class="main-nav">
-        <ul class="nav-list">
-          <li><a class="nav-link" href="../index.html">Volver a la home</a></li>
-          <li><a class="nav-link" href="accesorios.html">Accesorios</a></li>
-          <li><a class="nav-link" href="pantalones.html">Pantalones</a></li>
-        </ul>
-      </nav>
+      <div id="navbar"></div>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main>
       <section class="page-section">
         <h2 class="section-title">Remeras</h2>
         <p>Explorá nuestra colección de remeras Malucca.</p>
-
-        <!-- ACA JS VA A CREAR LAS CARDS DE REMERAS -->
         <div id="products-container"></div>
       </section>
     </main>
 
-    <!-- SCRIPTS -->
+    <script src="../js/navigation.js"></script>
     <script src="../js/products.js"></script>
     <script src="../js/auth.js"></script>
     <script>
-      // Dibuja las cards SOLO de la categoría "remeras"
+      renderNavbar('navbar');
       renderProductCards('products-container', 'remeras');
     </script>
   </body>
 </html>
+
+
 

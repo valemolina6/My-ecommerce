@@ -1,7 +1,3 @@
-// js/products.js
-
-// 1) LISTA DE PRODUCTOS
-//    Acá ponés TODOS tus productos (accesorios, remeras, pantalones, etc.)
 const products = [
   // ACCESORIOS
   {
@@ -21,7 +17,7 @@ const products = [
     category: 'accesorios'
   },
 
-  // EJEMPLOS PARA CUANDO HAGAS REMERAS Y PANTALONES
+  // REMERAS Y PANTALONES
   {
     id: 3,
     name: 'Remera beige',
@@ -54,24 +50,15 @@ const products = [
     image: '../img/products/pantbeige.jpg',
     category: 'pantalones'
   }
-  // Podés seguir agregando productos...
 ];
-
-/**
- * 2) FUNCIÓN QUE ARMA LAS CARDS
- * containerId: id del div donde querés poner las cards (products-container)
- * category: 'accesorios', 'remeras' o 'pantalones' para filtrar
- */
 function renderProductCards(containerId, category) {
   const container = document.getElementById(containerId);
   if (!container) return;
-
-  // Filtramos por categoría si nos la pasan
   const filteredProducts = category
     ? products.filter(p => p.category === category)
     : products;
 
-  // Arrancamos armando tu contenedor .productos
+ 
   let html = '<div class="productos">';
 
   for (const product of filteredProducts) {
@@ -95,16 +82,9 @@ function renderProductCards(containerId, category) {
     `;
   }
 
-  html += '</div>'; // cerramos .productos
-
-  // Metemos todo el HTML dentro del contenedor
+  html += '</div>'; 
   container.innerHTML = html;
 }
-
-/**
- * 3) Lógica para + y -
- * Escucha clicks en toda la página y se fija si tocaron un botón de cantidad
- */
 document.addEventListener('click', function (event) {
   if (!event.target.classList.contains('quantity-btn')) return;
 

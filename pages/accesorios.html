@@ -7,11 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/styles.css">
   </head>
-
-  <!-- clase "accesorios" para que se apliquen tus estilos body.accesorios -->
   <body class="accesorios">
-
-    <!-- HEADER CON TU ESTÉTICA -->
     <header>
       <h1>Malucca</h1>
       <img src="../img/logo_malucca.png" alt="Logo de Malucca" class="logo">
@@ -21,29 +17,22 @@
           <li><a class="nav-link" href="../index.html">Volver a la home</a></li>
           <li><a class="nav-link" href="remeras.html">Remeras</a></li>
           <li><a class="nav-link" href="pantalones.html">Pantalones</a></li>
+          <li><a class="nav-link" href="login.html" id="logout-button">Cerrar sesión</a></li>
         </ul>
       </nav>
     </header>
-
-    <!-- CONTENIDO PRINCIPAL -->
     <main>
       <section>
         <h2>Accesorios</h2>
         <p>Explorá nuestra colección de accesorios Malucca.</p>
-
-        <!-- ACA JS VA A CREAR TUS CARDS CON CLASE .productos Y .card -->
         <div id="products-container"></div>
       </section>
     </main>
 
-    <!-- SCRIPTS -->
-    <!-- (si más adelante usás el navbar como componente, también podrías cargar navigation.js aquí) -->
     <script src="../js/products.js"></script>
     <script src="../js/auth.js"></script>
 
     <script>
-      // Dibuja las cards SOLO de la categoría "accesorios"
-      // Usa tu CSS: .productos, .card, .btn, etc.
       renderProductCards('products-container', 'accesorios');
     </script>
   </body>

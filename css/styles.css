@@ -6,8 +6,6 @@
   --color-texto: #333;
   --color-blanco: #fff;
   --fuente-principal: 'Poppins', sans-serif;
-
-  /* Agrego estas dos para que no den error */
   --beige-medio: #e7d8c9;
   --blanco: #ffffff;
 }
@@ -286,6 +284,19 @@ button, .btn {
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-logout-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 
