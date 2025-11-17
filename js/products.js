@@ -1,105 +1,133 @@
-const products = [
-  // ACCESORIOS
-  {
-    id: 1,
-    name: 'Collar dorado',
-    description: 'Collar dorado Malucca con dije de perlas.',
-    price: 4500,
-    image: '../img/products/collarperla.jpg',
-    category: 'accesorios'
-  },
-  {
-    id: 2,
-    name: 'Aros de perlas',
-    description: 'Aros de perlas clásicos, ideales para todos los días.',
-    price: 3200,
-    image: '../img/products/arosperla.jpg',
-    category: 'accesorios'
-  },
+let productsDataCache = null;
 
-  // REMERAS Y PANTALONES
-  {
-    id: 3,
-    name: 'Remera beige',
-    description: 'Remera básica beige de algodón 100% suave.',
-    price: 15000,
-    image: '../img/products/rembeige.jpg',
-    category: 'remeras'
-  },
-{
-    id: 4,
-    name: 'Blusa blanco',
-    description: 'Blusa de lino blanca, fresca y cómoda.',
-    price: 15000,
-    image: '../img/products/blusablanca.jpg',
-    category: 'remeras'
-  },
-  {
-    id: 5,
-    name: 'Pantalón marron',
-    description: 'Pantalón sastrero marrón tiro alto y elegante.',
-    price: 25000,
-    image: '../img/products/pantmarron.jpg',
-    category: 'pantalones'
-  },
-  {
-    id: 6,
-    name: 'Pantalón beige',
-    description: 'Pantalón beige de gabardina, cómodo y versátil.',
-    price: 25000,
-    image: '../img/products/pantbeige.jpg',
-    category: 'pantalones'
+async function loadProductsData() {
+  if (productsDataCache) return productsDataCache;
+
+  try {
+    const response = await fetch('/data/products.json');
+    if (!response.ok) {
+      throw new Error('Error al cargar datos de productos');
+    }
+    const data = await response.json();
+    productsDataCache = data;
+    return data;
+  } catch (error) {
+    console.error(error);
+    return { remeras: [], pantalones: [], accesorios: [] };
   }
-];
-function renderProductCards(containerId, category) {
+}
+
+function attachQuantityHandlers(card) {
+  const minusBtn = card.querySelector('.qty-minus');
+  const plusBtn = card.querySelector('.qty-plus');
+  const valueEl = card.querySelector('.qty-value');
+
+  if (!minusBtn || !plusBtn || !valueEl) return;
+
+  minusBtn.addEventListener('click', () => {
+    const current = parseInt(valueEl.textContent, 10) || 1;
+    if (current > 1) valueEl.textContent = current - 1;
+  });
+
+  plusBtn.addEventListener('click', () => {
+    const current = parseInt(valueEl.textContent, 10) || 1;
+    valueEl.textContent = current + 1;
+  });
+
+  const addBtn = card.querySelector('.card-add');
+  if (addBtn) {
+    addBtn.addEventListener('click', () => {
+      const qty = valueEl.textContent;
+      const title = card.querySelector('.card-title').textContent;
+      alert(`Agregaste ${qty} unidad(es) de "${title}" al carrito (simulado).`);
+    });
+  }
+}
+
+function createProductCard(product) {
+  const card = document.createElement('article');
+  card.className = 'card card-product';
+
+  const formattedPrice = product.price.toLocaleString('es-AR');
+
+  card.innerHTML = `
+    <img src="${product.image}" alt="${product.name}" class="card-img">
+    <div class="card-body">
+      <h3 class="card-title">${product.name}</h3>
+      <p class="card-description">${product.description}</p>
+      <p class="card-price">$${formattedPrice}</p>
+      <div class="card-qty">
+        <button type="button" class="qty-btn qty-minus">-</button>
+        <span class="qty-value">1</span>
+        <button type="button" class="qty-btn qty-plus">+</button>
+      </div>
+      <button type="button" class="btn btn-primary card-add">Agregar</button>
+    </div>
+  `;
+
+  attachQuantityHandlers(card);
+  return card;
+}
+
+async function renderProductCards(containerId, category) {
   const container = document.getElementById(containerId);
   if (!container) return;
-  const filteredProducts = category
-    ? products.filter(p => p.category === category)
-    : products;
 
- 
-  let html = '<div class="productos">';
+  const data = await loadProductsData();
+  const items = data[category] || [];
 
-  for (const product of filteredProducts) {
-    html += `
-      <div class="card">
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p>${product.description}</p>
-        <p>$${product.price}</p>
+  const grid = document.createElement('div');
+  grid.className = 'productos';
 
-        <!-- Controles de cantidad -->
-        <div class="quantity-controls">
-          <button class="btn quantity-btn" data-id="${product.id}" data-action="minus">-</button>
-          <span id="quantity-${product.id}" class="quantity-value">1</span>
-          <button class="btn quantity-btn" data-id="${product.id}" data-action="plus">+</button>
-        </div>
+  items.forEach(product => {
+    const card = createProductCard(product);
+    grid.appendChild(card);
+  });
 
-        <!-- Botón de agregar (estética que ya tenías) -->
-        <button class="btn btn-primary">Agregar</button>
-      </div>
-    `;
-  }
-
-  html += '</div>'; 
-  container.innerHTML = html;
+  container.innerHTML = '';
+  container.appendChild(grid);
 }
-document.addEventListener('click', function (event) {
-  if (!event.target.classList.contains('quantity-btn')) return;
 
-  const productId = event.target.getAttribute('data-id');
-  const action = event.target.getAttribute('data-action');
-  const quantitySpan = document.getElementById(`quantity-${productId}`);
+async function renderHomeProducts(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
 
-  let currentValue = parseInt(quantitySpan.textContent, 10);
+  const data = await loadProductsData();
 
-  if (action === 'plus') {
-    currentValue++;
-  } else if (action === 'minus' && currentValue > 1) {
-    currentValue--;
-  }
+  const wrapper = document.createElement('div');
+  wrapper.className = 'home-products';
 
-  quantitySpan.textContent = String(currentValue);
-});
+  const categories = [
+    { key: 'remeras', title: 'Remeras' },
+    { key: 'pantalones', title: 'Pantalones' },
+    { key: 'accesorios', title: 'Accesorios' }
+  ];
+
+  categories.forEach(cat => {
+    const products = (data[cat.key] || []).slice(0, 3);
+    if (!products.length) return;
+
+    const section = document.createElement('section');
+    section.className = 'home-category-section';
+
+    const heading = document.createElement('h3');
+    heading.className = 'home-category-title';
+    heading.textContent = cat.title;
+
+    const grid = document.createElement('div');
+    grid.className = 'productos';
+
+    products.forEach(product => {
+      const card = createProductCard(product);
+      grid.appendChild(card);
+    });
+
+    section.appendChild(heading);
+    section.appendChild(grid);
+    wrapper.appendChild(section);
+  });
+
+  container.innerHTML = '';
+  container.appendChild(wrapper);
+}
 

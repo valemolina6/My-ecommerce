@@ -299,4 +299,57 @@ button, .btn {
   font-weight: 600;
 }
 
+.card-body {
+  text-align: left;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  margin: 8px 0;
+}
+
+.card-price {
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.card-qty {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.qty-btn {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  background-color: var(--color-secundario);
+}
+
+.qty-value {
+  min-width: 24px;
+  text-align: center;
+}
+
+.home-products {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.home-category-section {
+  text-align: left;
+}
+
+.home-category-title {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: var(--color-acento);
+}
+
+
 

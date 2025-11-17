@@ -1,8 +1,8 @@
 const navLinks = [
-  { href: '../index.html', label: 'Inicio' },
-  { href: 'remeras.html', label: 'Remeras' },
-  { href: 'pantalones.html', label: 'Pantalones' },
-  { href: 'accesorios.html', label: 'Accesorios' }
+  { href: '/home.html', label: 'Inicio' },
+  { href: '/pages/remeras.html', label: 'Remeras' },
+  { href: '/pages/pantalones.html', label: 'Pantalones' },
+  { href: '/pages/accesorios.html', label: 'Accesorios' }
 ];
 
 function renderNavbar(containerId) {
@@ -30,12 +30,14 @@ function renderNavbar(containerId) {
   const logoutButton = document.createElement('button');
   logoutButton.id = 'logout-button';
   logoutButton.className = 'btn nav-logout-btn';
+  logoutButton.type = 'button';
   logoutButton.textContent = 'Cerrar sesión';
 
-  nav.innerHTML = '';
   nav.appendChild(ul);
   nav.appendChild(logoutButton);
 
   container.innerHTML = '';
   container.appendChild(nav);
 }
+
+

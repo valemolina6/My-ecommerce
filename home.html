@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Malucca | Home</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+
+  <body class="home">
+    <header class="site-header">
+      <h1>Malucca</h1>
+      <img src="img/logo_malucca.png" alt="Logo Malucca" class="logo" />
+      <div id="navbar"></div>
+    </header>
+
+    <main>
+      <section class="page-section">
+        <h2 class="section-title">Productos destacados</h2>
+        <p>Explorá las categorías de Malucca con nuestros productos seleccionados.</p>
+
+        <div id="home-products-container"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2025 Malucca · Proyecto de ecommerce de Valentina Molina</p>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+      renderNavbar('navbar');
+      renderHomeProducts('home-products-container');
+    </script>
+  </body>
+</html>
