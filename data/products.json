@@ -4,22 +4,29 @@
       "id": "rem-beige",
       "name": "Remera Beige",
       "description": "Remera básica de algodón en tono beige.",
-      "price": 15000,
+      "price": 15200,
       "image": "/img/products/rembeige.jpg"
     },
     {
       "id": "blusa-blanca",
       "name": "Blusa Blanca",
       "description": "Blusa blanca con diseño clásico.",
-      "price": 16000,
+      "price": 18000,
       "image": "/img/products/blusablanca.jpg"
     },
     {
-      "id": "remera-rayada",
-      "name": "Remera Rayada",
-      "description": "Remera rayada en tonos neutros.",
-      "price": 17000,
-      "image": "/img/products/rembeige.jpg"
+      "id": "camisa-rayada",
+      "name": "Camisa Rayada",
+      "description": "Camisa con rayas verticales en tonos neutros.",
+      "price": 275000,
+      "image": "/img/products/camrayada.jpg"
+    },
+    {
+      "id": "top-marron",
+      "name": "Top Marrón",
+      "description": "Top marrón asimetrico y elegante.",
+      "price": 17600,
+      "image": "/img/products/topmarron.jpg"
     }
   ],
   "pantalones": [
@@ -27,45 +34,59 @@
       "id": "pant-beige",
       "name": "Pantalón Beige",
       "description": "Pantalón recto color beige.",
-      "price": 25000,
+      "price": 45300,
       "image": "/img/products/pantbeige.jpg"
     },
     {
       "id": "pant-marron",
       "name": "Pantalón Marrón",
       "description": "Pantalón marrón tiro alto.",
-      "price": 27000,
+      "price": 53800,
       "image": "/img/products/pantmarron.jpg"
     },
     {
-      "id": "pant-relax",
-      "name": "Pantalón Relax",
-      "description": "Pantalón cómodo para uso diario.",
-      "price": 26000,
-      "image": "/img/products/pantbeige.jpg"
+      "id": "pollera-blanca",
+      "name": "Pollera Blanca",
+      "description": "Pollera blanca de lino.",
+      "price": 37300,
+      "image": "/img/products/pollerablanca.jpg"
+    },
+    {
+      "id": "bermuda-sastrero",
+      "name": "Bermuda Sastrero",
+      "description": "Bermuda sastrero color beige.",
+      "price": 28500,
+      "image": "/img/products/bermudabeige.jpg"
     }
   ],
   "accesorios": [
     {
       "id": "collar-dorado",
       "name": "Collar Dorado",
-      "description": "Collar dorado con dije de hojas.",
-      "price": 4500,
+      "description": "Collar dorado de acero inoxidable con perlas.",
+      "price": 45500,
       "image": "/img/products/collarperla.jpg"
     },
     {
       "id": "aros-perlas",
       "name": "Aros de Perlas",
-      "description": "Aros tipo argolla con perlas.",
-      "price": 3200,
+      "description": "Aros con perlas elegantes.",
+      "price": 23200,
       "image": "/img/products/arosperla.jpg"
     },
     {
-      "id": "pulsera-simple",
-      "name": "Pulsera Simple",
-      "description": "Pulsera fina en tono dorado.",
-      "price": 3800,
-      "image": "/img/products/collarperla.jpg"
+      "id": "aros-dorados",
+      "name": "Aros Dorados",
+      "description": "Aros de acero inoxidable en tono dorado.",
+      "price": 23200,
+      "image": "/img/products/arosdorados.jpg"
+    },
+    {
+      "id": "esclavas-doradas",
+      "name": "Set de Esclavas Doradas",
+      "description": "Set de dos esclavas doradas de acero inoxidable.",
+      "price": 33800,
+      "image": "/img/products/setesclavas.jpg"
     }
   ]
 }

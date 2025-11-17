@@ -49,11 +49,12 @@ if (registerForm) {
   });
 }
 
-const logoutButton = document.getElementById('logout-button');
 
-if (logoutButton) {
-  logoutButton.addEventListener('click', function () {
+document.addEventListener('click', function (event) {
+  const target = event.target;
+
+  if (target && target.id === 'logout-button') {
+    event.preventDefault();
     window.location.href = '/pages/login.html';
-  });
-}
-
+  }
+});
