@@ -16,10 +16,13 @@ if (loginForm) {
       alert('Por favor, completá correo y contraseña.');
       return;
     }
-
+    const user = { email: email };
+    sessionStorage.setItem('currentUser', JSON.stringify(user));
     window.location.href = '/home.html';
   });
 }
+
+
 
 const registerForm = document.getElementById('register-form');
 
@@ -44,17 +47,34 @@ if (registerForm) {
       return;
     }
 
+    const user = {
+      name: nameInput.value.trim(),
+      lastName: lastNameInput.value.trim(),
+      email: emailInput.value.trim(),
+      birthDate: dateInput.value.trim()
+    };
+    localStorage.setItem('lastRegisteredUser', JSON.stringify(user));
+
     alert('Registro exitoso. Ahora podés iniciar sesión.');
     window.location.href = './login.html';
   });
 }
-
-
 document.addEventListener('click', function (event) {
   const target = event.target;
 
   if (target && target.id === 'logout-button') {
     event.preventDefault();
+    sessionStorage.removeItem('currentUser');
     window.location.href = '/pages/login.html';
   }
 });
+
+function requireAuth() {
+  const userStr = sessionStorage.getItem('currentUser');
+  if (!userStr) {
+    window.location.href = '/pages/login.html';
+  }
+}
+window.requireAuth = requireAuth;
+
+

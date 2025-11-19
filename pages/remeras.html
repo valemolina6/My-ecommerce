@@ -25,10 +25,15 @@
     </main>
 
     <script src="../js/navigation.js"></script>
-    <script src="../js/products.js"></script>
-    <script src="../js/auth.js"></script>
+      <script src="../js/products.js"></script>
+      <script src="../js/cart.js"></script>
+      <script src="../js/auth.js"></script>
     <script>
+      requireAuth();
       renderNavbar('navbar');
+        if (window.updateCartCount) {
+          window.updateCartCount();
+        }
       renderProductCards('products-container', 'remeras');
     </script>
 

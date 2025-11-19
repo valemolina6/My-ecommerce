@@ -1,5 +1,7 @@
 let productsDataCache = null;
 
+// ----------------- DATOS DE PRODUCTOS -----------------
+
 async function loadProductsData() {
   if (productsDataCache) return productsDataCache;
 
@@ -17,34 +19,56 @@ async function loadProductsData() {
   }
 }
 
-function attachQuantityHandlers(card) {
-  const minusBtn = card.querySelector('.qty-minus');
-  const plusBtn = card.querySelector('.qty-plus');
-  const valueEl = card.querySelector('.qty-value');
+// ----------------- CARRITO EN LOCALSTORAGE -----------------
 
-  if (!minusBtn || !plusBtn || !valueEl) return;
-
-  minusBtn.addEventListener('click', () => {
-    const current = parseInt(valueEl.textContent, 10) || 1;
-    if (current > 1) valueEl.textContent = current - 1;
-  });
-
-  plusBtn.addEventListener('click', () => {
-    const current = parseInt(valueEl.textContent, 10) || 1;
-    valueEl.textContent = current + 1;
-  });
-
-  const addBtn = card.querySelector('.card-add');
-  if (addBtn) {
-    addBtn.addEventListener('click', () => {
-      const qty = valueEl.textContent;
-      const title = card.querySelector('.card-title').textContent;
-      alert(`Agregaste ${qty} unidad(es) de "${title}" al carrito (simulado).`);
-    });
+function getCartItems() {
+  try {
+    return JSON.parse(localStorage.getItem('cartItems')) || [];
+  } catch (e) {
+    return [];
   }
 }
 
-function createProductCard(product) {
+function saveCartItems(cartItems) {
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+}
+
+// Nuevo: actualiza el badge del carrito en el navbar
+function updateCartCount() {
+  const cartItems = getCartItems();
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const badge = document.getElementById('cart-count');
+
+  if (!badge) return;
+
+  if (totalQuantity > 0) {
+    badge.textContent = ` ${totalQuantity}`;
+  } else {
+    badge.textContent = '';
+  }
+}
+
+function addToCart(item) {
+  const cartItems = getCartItems();
+  const existingIndex = cartItems.findIndex(
+    (cartItem) => cartItem.id === item.id
+  );
+
+  if (existingIndex >= 0) {
+    cartItems[existingIndex].quantity += item.quantity;
+  } else {
+    cartItems.push(item);
+  }
+
+  saveCartItems(cartItems);
+  updateCartCount(); // actualizo el contador del navbar
+
+  alert(`Agregaste ${item.quantity} unidad(es) de "${item.name}" al carrito.`);
+}
+
+// ----------------- CARDS DE PRODUCTOS -----------------
+
+function createProductCard(product, categoryKey) {
   const card = document.createElement('article');
   card.className = 'card card-product';
 
@@ -65,28 +89,59 @@ function createProductCard(product) {
     </div>
   `;
 
-  attachQuantityHandlers(card);
+  const minusBtn = card.querySelector('.qty-minus');
+  const plusBtn = card.querySelector('.qty-plus');
+  const valueEl = card.querySelector('.qty-value');
+
+  minusBtn.addEventListener('click', () => {
+    const current = parseInt(valueEl.textContent, 10) || 1;
+    if (current > 1) valueEl.textContent = current - 1;
+  });
+
+  plusBtn.addEventListener('click', () => {
+    const current = parseInt(valueEl.textContent, 10) || 1;
+    valueEl.textContent = current + 1;
+  });
+
+  const addBtn = card.querySelector('.card-add');
+  addBtn.addEventListener('click', () => {
+    const quantity = parseInt(valueEl.textContent, 10) || 1;
+
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      category: categoryKey,
+      quantity: quantity
+    });
+  });
+
   return card;
 }
 
-async function renderProductCards(containerId, category) {
+// ----------- PÁGINAS POR CATEGORÍA -----------
+
+async function renderProductCards(containerId, categoryKey) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
   const data = await loadProductsData();
-  const items = data[category] || [];
+  const items = data[categoryKey] || [];
 
   const grid = document.createElement('div');
   grid.className = 'productos';
 
-  items.forEach(product => {
-    const card = createProductCard(product);
+  items.forEach((product) => {
+    const card = createProductCard(product, categoryKey);
     grid.appendChild(card);
   });
 
   container.innerHTML = '';
   container.appendChild(grid);
 }
+
+// ----------- HOME DEL USUARIO LOGUEADO -----------
 
 async function renderHomeProducts(containerId) {
   const container = document.getElementById(containerId);
@@ -103,7 +158,7 @@ async function renderHomeProducts(containerId) {
     { key: 'accesorios', title: 'Accesorios' }
   ];
 
-  categories.forEach(cat => {
+  categories.forEach((cat) => {
     const products = (data[cat.key] || []).slice(0, 3);
     if (!products.length) return;
 
@@ -117,8 +172,8 @@ async function renderHomeProducts(containerId) {
     const grid = document.createElement('div');
     grid.className = 'productos';
 
-    products.forEach(product => {
-      const card = createProductCard(product);
+    products.forEach((product) => {
+      const card = createProductCard(product, cat.key);
       grid.appendChild(card);
     });
 
@@ -130,4 +185,12 @@ async function renderHomeProducts(containerId) {
   container.innerHTML = '';
   container.appendChild(wrapper);
 }
+
+// Exponer funciones globalmente para usarlas en los HTML
+window.renderProductCards = renderProductCards;
+window.renderHomeProducts = renderHomeProducts;
+window.loadProductsData = loadProductsData;
+window.getCartItems = getCartItems;
+window.saveCartItems = saveCartItems;
+window.updateCartCount = updateCartCount;
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Carrito - Malucca</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+
+  <body class="carrito">
+    <header class="site-header">
+      <h1>Malucca</h1>
+      <img src="../img/logo_malucca.png" alt="Logo Malucca" class="logo" />
+      <div id="navbar"></div>
+    </header>
+
+    <main>
+      <section class="page-section">
+        <h2 class="section-title">Carrito de compras</h2>
+        <p>Revisá los productos que agregaste a tu carrito.</p>
+        <div id="cart-container"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2025 Malucca · Proyecto de ecommerce de Valentina Molina</p>
+    </footer>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/products.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        requireAuth();
+      renderNavbar('navbar');
+      if (window.updateCartCount) {
+        window.updateCartCount();
+      }
+
+      renderCart('cart-container');
+    </script>
+  </body>
+</html>
+
